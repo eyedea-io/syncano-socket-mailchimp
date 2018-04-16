@@ -1,0 +1,25 @@
+name: mailchimp
+description: Manage mailchimp members
+version: 0.1.0
+url: 'https://github.com/eyedea-io/syncano-socket-mailchimp'
+keywords:
+  - mailchimp
+  - newsletter
+  - mail
+  - eyedea
+config:
+  MAILCHIMP_API_KEY:
+    description: Mailchimp API key
+    required: true
+endpoints:
+  signup:
+    description: Sign up to members list
+    inputs:
+      listId:
+        type: string
+      emai:
+        type: string
+        format: email
+    outputs:
+      success:
+        exit_code: 200

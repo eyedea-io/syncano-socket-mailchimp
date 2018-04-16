@@ -1,0 +1,39 @@
+{
+  "name": "@eyedea-sockets/mailchimp",
+  "version": "0.1.0",
+  "description": "Syncano Socket to mangage mailchimp subscriptions",
+  "repository": "https://github.com/eyedea-io/syncano-socket-mailchimp.git",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm install && npm run build:src && npm run build:env",
+    "build:src": "sh ./bin/compile",
+    "build:env": "sh ./bin/compile-env",
+    "test": "npm-run-all --parallel test:lint test:e2e:coverage",
+    "test:e2e": "NODE_ENV=test mocha -s 1800 --reporter spec --require babel-register --timeout 4000",
+    "test:e2e:coverage": "nyc --produce-source-map=true npm run test:e2e",
+    "test:lint": "standard --fix"
+  },
+  "dependencies": {
+    "@syncano/core": "^0.12.1",
+    "axios": "^0.18.0",
+    "axios-mock-adapter": "^1.15.0"
+  },
+  "devDependencies": {
+    "@syncano/test": "canary",
+    "@syncano/test-tools": "canary",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "cross-env": "^5.1.4",
+    "lodash.merge": "^4.6.1",
+    "mocha": "^3.5.3",
+    "npm-run-all": "^4.1.2",
+    "nyc": "^11.6.0",
+    "sinon": "^4.5.0",
+    "standard": "^11.0.1"
+  }
+}
