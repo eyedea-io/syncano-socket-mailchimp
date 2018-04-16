@@ -10,19 +10,6 @@ const axiosMock = new MockAdapter(axios)
 describe('signup', () => {
   const config = {MAILCHIMP_API_KEY: 'apikey-rs10'}
 
-  it.skip('can find profile', async () => {
-    const args = { id: 1 }
-    const result = await run('find', {args})
-    assert.propertyVal(result, 'code', 200)
-    // assert.deepPropertyVal(result, 'data', fakeProfile)
-  })
-  it('require listId', async () => {
-    const fakeResponse = new Error('Invalid listId parameter.')
-    const result = await run('signup')
-
-    assert.propertyVal(result, 'code', 400)
-    assert.deepPropertyVal(result, 'data', {message: fakeResponse.message})
-  })
   it('require email', async () => {
     const fakeResponse = new Error('Email is required.')
     const args = {listId: 'xxx'}
