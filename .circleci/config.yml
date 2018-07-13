@@ -17,6 +17,8 @@ jobs:
 
       - run: npm install
       - run: npm install @syncano/cli@canary --no-save
+      - run: npm run build
+      - run: npx s compile
 
       - save_cache:
           paths:
@@ -40,6 +42,13 @@ jobs:
           key: v6-repo-{{ .Environment.CIRCLE_SHA1 }}
       - run: npm run test
 
+      - store_artifacts:
+          path: ~/repo/test/.results
+          destination: results
+
+      - run: npm run test
+      - run: npm run codecov
+
   deploy_staging:
     name: Deploy
     docker:
@@ -50,10 +59,7 @@ jobs:
     steps:
       - restore_cache:
           key: v6-repo-{{ .Environment.CIRCLE_SHA1 }}
-      - add_ssh_keys
-      - run: echo '|1|BS8rJGfFqV2SXnU8vClimfxwDuc=|1QpVgk+tuVIRyREOvpIm4PQY9H4= ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==' > ~/.ssh/known_hosts
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - run: echo "@syncano:registry=https://registry.npmjs.org/" >> ~/.npmrc
       - run: npm publish --tag canary --access=public
 
   deploy:
@@ -67,8 +73,7 @@ jobs:
       - restore_cache:
           key: v6-repo-{{ .Environment.CIRCLE_SHA1 }}
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - run: echo "@syncano:registry=https://registry.npmjs.org/" >> ~/.npmrc
-      - run: npm publish --access=public
+      - run: npm dist-tag add `npm view . name`@`node -p "require('./package.json').version"` latest
 
 workflows:
   version: 2
