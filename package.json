@@ -1,22 +1,23 @@
 {
   "name": "@eyedea-sockets/mailchimp",
-  "version": "0.1.1",
-  "description": "Syncano Socket to mangage mailchimp subscriptions",
+  "version": "0.1.2",
+  "description": "Syncano Socket to manage mailchimp subscriptions",
   "repository": "https://github.com/eyedea-io/syncano-socket-mailchimp.git",
   "public": true,
   "author": "Eyedea <hello@eyedea.io> (https://eyedea.io)",
   "license": "MIT",
   "keywords": [
     "syncano",
+    "eyedea",
     "socket",
     "mailchimp",
+    "newsletter"
     "mail"
   ],
   "peerDependencies": {
     "@syncano/cli": "0.13.0-alpha.f6ea95d4"
   },
   "dependencies": {
-    "@syncano/cli": "^0.13.0-alpha.f6ea95d4",
     "@syncano/core": "0.13.0-alpha.f6ea95d4",
     "@syncano/validate": "0.13.0-alpha.f6ea95d4",
     "axios": "^0.18.0"
