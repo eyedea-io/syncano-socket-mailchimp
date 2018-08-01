@@ -11,7 +11,7 @@
     "eyedea",
     "socket",
     "mailchimp",
-    "newsletter"
+    "newsletter",
     "mail"
   ],
   "peerDependencies": {
