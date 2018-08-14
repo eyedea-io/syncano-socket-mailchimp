@@ -20,12 +20,12 @@ export default async ctx => {
 
   try {
     await axios.post(endpoint, {
-      data: {
-        email_address: email,
-        status: 'pending'
-      },
+      email_address: email,
+      status: 'pending'
+    },
+    {
       headers: {
-        authorization: `apikey ${MAILCHIMP_API_KEY}`
+        authorization: `api_key ${MAILCHIMP_API_KEY}`
       }
     })
 
@@ -34,6 +34,7 @@ export default async ctx => {
       message: `You're now subscribed. Thanks!`
     })
   } catch (err) {
+    warn(err.message)
     const message = {
       'Invalid Resource': 'Given email is invalid.',
       'Member Exists': `${ctx.args.email} is already on the list.`

@@ -1,6 +1,6 @@
 {
   "name": "@eyedea-sockets/mailchimp",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Syncano Socket to manage mailchimp subscriptions",
   "repository": "https://github.com/eyedea-io/syncano-socket-mailchimp.git",
   "public": true,
