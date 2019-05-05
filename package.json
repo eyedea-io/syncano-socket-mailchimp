@@ -20,7 +20,8 @@
   "dependencies": {
     "@syncano/core": "0.13.0-alpha.f6ea95d4",
     "@syncano/validate": "0.13.0-alpha.f6ea95d4",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "snyk": "^1.161.1"
   },
   "scripts": {
     "build": "npm run build:src && npm run build:env",
@@ -31,7 +32,9 @@
     "test:unit": "NODE_ENV=test jest unit/.*\\.test\\.js",
     "test:e2e": "NODE_ENV=test jest e2e/.*\\.test\\.js",
     "test:audit": "npm audit",
-    "test:lint": "standard --fix"
+    "test:lint": "standard --fix",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.49",
@@ -85,5 +88,6 @@
         }
       ]
     ]
-  }
+  },
+  "snyk": true
 }
