@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@syncano/core": "0.13.0-alpha.f6ea95d4",
-    "@syncano/validate": "0.13.0-alpha.f6ea95d4",
+    "@syncano/validate": "0.13.0",
     "axios": "^0.18.0"
   },
   "scripts": {
