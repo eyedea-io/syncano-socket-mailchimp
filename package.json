@@ -18,9 +18,9 @@
     "@syncano/cli": "0.13.0-alpha.f6ea95d4"
   },
   "dependencies": {
-    "@syncano/core": "0.13.0-alpha.f6ea95d4",
-    "@syncano/validate": "0.13.0-alpha.f6ea95d4",
-    "axios": "^0.18.0"
+    "@syncano/core": "0.15.0",
+    "@syncano/validate": "0.13.0",
+    "axios": "^0.21.3"
   },
   "scripts": {
     "build": "npm run build:src && npm run build:env",
